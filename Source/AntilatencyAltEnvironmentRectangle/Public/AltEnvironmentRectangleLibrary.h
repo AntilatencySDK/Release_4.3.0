@@ -14,6 +14,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 
+#include "AltEnvironment.h"
 #include "EnvironmentConstructor.h"
 
 #include <Antilatency.Alt.Environment.Rectangle.h>
@@ -37,5 +38,5 @@ public:
      */
     static UAltEnvironmentRectangleLibrary* GetLibrary();
 
-	Antilatency::InterfaceContract::ExceptionCode GetRotation(FQuat& result);
+	Antilatency::InterfaceContract::ExceptionCode GetRotation(UAltEnvironment* environment, FQuat& result);
 };

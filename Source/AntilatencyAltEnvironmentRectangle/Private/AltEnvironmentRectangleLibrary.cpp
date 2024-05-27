@@ -27,13 +27,18 @@ UAltEnvironmentRectangleLibrary* UAltEnvironmentRectangleLibrary::GetLibrary() {
     return ObjectConstructor<UAltEnvironmentRectangleLibrary>::create(native);
 }
 
-Antilatency::InterfaceContract::ExceptionCode UAltEnvironmentRectangleLibrary::GetRotation(FQuat& result) {
+Antilatency::InterfaceContract::ExceptionCode UAltEnvironmentRectangleLibrary::GetRotation(UAltEnvironment* environment, FQuat& result) {
     if (!IsValid()) {
         ALTENVIRONMENTRECTANGLE_LOG(Warning, TEXT("Calling object wrapper method while native object is null"));
         return Antilatency::InterfaceContract::ExceptionCode::ErrorPointer;
     }
 
-    auto orientationAwareInterface = GetNative().queryInterface<Antilatency::Alt::Environment::IOrientationAwareEnvironment>();
+    if (environment == nullptr || !environment->IsValid()) {
+        ALTENVIRONMENTRECTANGLE_LOG(Warning, TEXT("Environment is nullptr or invalid"));
+        return Antilatency::InterfaceContract::ExceptionCode::ErrorPointer;
+    }
+
+    auto orientationAwareInterface = environment->GetNative().queryInterface<Antilatency::Alt::Environment::IOrientationAwareEnvironment>();
     if (orientationAwareInterface == nullptr) {
         return Antilatency::InterfaceContract::ExceptionCode::NoInterface;
     }

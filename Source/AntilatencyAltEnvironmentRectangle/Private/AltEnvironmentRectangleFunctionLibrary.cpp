@@ -16,12 +16,12 @@ void UAltEnvironmentRectangleFunctionLibrary::GetAltEnvironmentRectangleLibrary(
     exception = static_cast<EAltEnvironmentRectangleExceptionResult>(result != nullptr);
 }
 
-void UAltEnvironmentRectangleFunctionLibrary::GetRotation(UAltEnvironmentRectangleLibrary* rectangleLibrary, FQuat result, EAltEnvironmentRectangleExceptionResult& exception) {
+void UAltEnvironmentRectangleFunctionLibrary::GetRotation(UAltEnvironmentRectangleLibrary* rectangleLibrary, UAltEnvironment* environment, FQuat& result, EAltEnvironmentRectangleExceptionResult& exception) {
     if (rectangleLibrary == nullptr) {
         exception = EAltEnvironmentRectangleExceptionResult::Fail;
         return;
     }
 
-    const auto callResult = rectangleLibrary->GetRotation(result);
+    const auto callResult = rectangleLibrary->GetRotation(environment, result);
     exception = static_cast<EAltEnvironmentRectangleExceptionResult>(callResult == Antilatency::InterfaceContract::ExceptionCode::Ok);
 }

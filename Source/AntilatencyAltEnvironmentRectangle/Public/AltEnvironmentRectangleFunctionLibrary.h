@@ -44,5 +44,5 @@ public:
     static void GetAltEnvironmentRectangleLibrary(UAltEnvironmentRectangleLibrary*& result, EAltEnvironmentRectangleExceptionResult& exception);
 
     UFUNCTION(BlueprintCallable, Category = "Antilatency|Alt|Environment|Rectangle|Library", Meta = (ExpandEnumAsExecs = "exception"))
-    static void GetRotation(UPARAM(ref) UAltEnvironmentRectangleLibrary* rectangleLibrary, FQuat result, EAltEnvironmentRectangleExceptionResult& exception);
+    static void GetRotation(UPARAM(ref) UAltEnvironmentRectangleLibrary* rectangleLibrary, UPARAM(ref) UAltEnvironment* environment, FQuat& result, EAltEnvironmentRectangleExceptionResult& exception);
 };

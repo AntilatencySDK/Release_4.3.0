@@ -294,6 +294,87 @@ namespace Antilatency {
 	} //namespace InterfaceContract
 } //namespace Antilatency
 
+namespace Antilatency {
+	namespace Alt {
+		namespace Environment {
+			/* copy and paste this to implementer
+			Antilatency::InterfaceContract::ExceptionCode mutate(const std::vector<float>& powers, const std::vector<Antilatency::Math::float3>& rays, float sphereD, const std::vector<Antilatency::Math::float2>& x, const std::vector<Antilatency::Math::float2x3>& xOverPosition, Antilatency::Math::float3 up, Antilatency::InterfaceContract::LongBool& result) {
+				return Antilatency::InterfaceContract::ExceptionCode::NotImplemented;
+			}
+			Antilatency::InterfaceContract::ExceptionCode getUpdateId(int32_t& result) {
+				return Antilatency::InterfaceContract::ExceptionCode::NotImplemented;
+			}
+			*/
+			struct IEnvironmentMutable : Antilatency::InterfaceContract::IInterface {
+				struct VMT : Antilatency::InterfaceContract::IInterface::VMT {
+					virtual Antilatency::InterfaceContract::ExceptionCode ANTILATENCY_INTERFACE_CALL mutate(Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate powers, Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate rays, float sphereD, Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate x, Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate xOverPosition, Antilatency::Math::float3 up, Antilatency::InterfaceContract::LongBool& result) = 0;
+					virtual Antilatency::InterfaceContract::ExceptionCode ANTILATENCY_INTERFACE_CALL getUpdateId(int32_t& result) = 0;
+					static constexpr Antilatency::InterfaceContract::InterfaceID ID() {
+						return Antilatency::InterfaceContract::InterfaceID{0xe664544b,0xafd5,0x4723,{0x94,0x9a,0x9a,0x88,0x85,0x26,0xef,0x97}};
+					}
+				private:
+					~VMT() = delete;
+				};
+				
+				static bool isInterfaceSupported(const Antilatency::InterfaceContract::InterfaceID& id) {
+				    if (id == IEnvironmentMutable::VMT::ID()) {
+				        return true;
+				    }
+				    return Antilatency::InterfaceContract::IInterface::isInterfaceSupported(id);
+				}
+				IEnvironmentMutable() = default;
+				IEnvironmentMutable(std::nullptr_t) {}
+				explicit IEnvironmentMutable(VMT* pointer) : Antilatency::InterfaceContract::IInterface(pointer) {}
+				template<typename T, typename = typename std::enable_if<std::is_base_of<IEnvironmentMutable, T>::value>::type>
+				IEnvironmentMutable& operator = (const T& other) {
+				    Antilatency::InterfaceContract::IInterface::operator=(other);
+				    return *this;
+				}
+				template<class Implementer, class ... TArgs>
+				static IEnvironmentMutable create(TArgs&&... args) {
+				    return *new Implementer(std::forward<TArgs>(args)...);
+				}
+				void attach(VMT* other) ANTILATENCY_NOEXCEPT {
+				    Antilatency::InterfaceContract::IInterface::attach(other);
+				}
+				VMT* detach() ANTILATENCY_NOEXCEPT {
+				    return reinterpret_cast<VMT*>(Antilatency::InterfaceContract::IInterface::detach());
+				}
+				Antilatency::InterfaceContract::ExceptionCode mutate(const std::vector<float>& powers, const std::vector<Antilatency::Math::float3>& rays, float sphereD, const std::vector<Antilatency::Math::float2>& x, const std::vector<Antilatency::Math::float2x3>& xOverPosition, Antilatency::Math::float3 up, Antilatency::InterfaceContract::LongBool& result) {
+					auto powersMarshaler = Antilatency::InterfaceContract::Details::ArrayInMarshaler::create(powers);
+					auto raysMarshaler = Antilatency::InterfaceContract::Details::ArrayInMarshaler::create(rays);
+					auto xMarshaler = Antilatency::InterfaceContract::Details::ArrayInMarshaler::create(x);
+					auto xOverPositionMarshaler = Antilatency::InterfaceContract::Details::ArrayInMarshaler::create(xOverPosition);
+					return (reinterpret_cast<VMT*>(this->_object))->mutate(powersMarshaler, raysMarshaler, sphereD, xMarshaler, xOverPositionMarshaler, up, result);
+				}
+				Antilatency::InterfaceContract::ExceptionCode getUpdateId(int32_t& result) {
+					return (reinterpret_cast<VMT*>(this->_object))->getUpdateId(result);
+				}
+			};
+		} //namespace Environment
+	} //namespace Alt
+} //namespace Antilatency
+namespace Antilatency {
+	namespace InterfaceContract {
+		namespace Details {
+			template<typename Implementer, typename LifeTimeController>
+			struct InterfaceRemap<Antilatency::Alt::Environment::IEnvironmentMutable, Implementer, LifeTimeController> : Antilatency::InterfaceContract::Details::InterfaceRemap<Antilatency::InterfaceContract::IInterface, Implementer, LifeTimeController> {
+			public:
+			    InterfaceRemap() = default;
+			public:
+				virtual Antilatency::InterfaceContract::ExceptionCode ANTILATENCY_INTERFACE_CALL mutate(Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate powers, Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate rays, float sphereD, Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate x, Antilatency::InterfaceContract::Details::ArrayInMarshaler::Intermediate xOverPosition, Antilatency::Math::float3 up, Antilatency::InterfaceContract::LongBool& result) {
+					auto exceptionCode_ = this->_object->mutate(powers, rays, sphereD, x, xOverPosition, up, result);
+					return exceptionCode_;
+				}
+				virtual Antilatency::InterfaceContract::ExceptionCode ANTILATENCY_INTERFACE_CALL getUpdateId(int32_t& result) {
+					auto exceptionCode_ = this->_object->getUpdateId(result);
+					return exceptionCode_;
+				}
+			};
+		} //namespace Details
+	} //namespace InterfaceContract
+} //namespace Antilatency
+
 
 #ifdef _MSC_VER
 #pragma warning(pop)

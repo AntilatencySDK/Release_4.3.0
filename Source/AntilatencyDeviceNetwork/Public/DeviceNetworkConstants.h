@@ -19,7 +19,7 @@
 /**
  *
  */
-class UDeviceNetworkConstants {
+class ANTILATENCYDEVICENETWORK_API UDeviceNetworkConstants {
 public:
 
     const static FUsbDeviceFilter AllUsbDevices;

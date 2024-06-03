@@ -14,7 +14,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 
-class MathLibrary {
+class ANTILATENCYALTTRACKING_API MathLibrary {
 public:
     static FVector AntilatencyVectorToUe(const FVector& source);
     static FVector UeVectorToAntilatency(const FVector& source);

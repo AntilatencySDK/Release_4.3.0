@@ -449,4 +449,130 @@ namespace Antilatency.Alt.Environment {
 	}
 }
 
+namespace Antilatency.Alt.Environment {
+	[Guid("e664544b-afd5-4723-949a-9a888526ef97")]
+	[Antilatency.InterfaceContract.InterfaceId("e664544b-afd5-4723-949a-9a888526ef97")]
+	public interface IEnvironmentMutable : Antilatency.InterfaceContract.IInterface {
+		Antilatency.InterfaceContract.Bool mutate(float[] powers, UnityEngine.Vector3[] rays, float sphereD, UnityEngine.Vector2[] x, Antilatency.Math.float2x3[] xOverPosition, UnityEngine.Vector3 up);
+		int getUpdateId();
+	}
+}
+public static partial class QueryInterfaceExtensions {
+	public static readonly System.Guid Antilatency_Alt_Environment_IEnvironmentMutable_InterfaceID = new System.Guid("e664544b-afd5-4723-949a-9a888526ef97");
+	public static void QueryInterface(this Antilatency.InterfaceContract.IUnsafe _this, out Antilatency.Alt.Environment.IEnvironmentMutable result) {
+		var guid = Antilatency_Alt_Environment_IEnvironmentMutable_InterfaceID;
+		System.IntPtr ptr = System.IntPtr.Zero;
+		_this.QueryInterface(ref guid, out ptr);
+		if (ptr != System.IntPtr.Zero) {
+			result = new Antilatency.Alt.Environment.Details.IEnvironmentMutableWrapper(ptr);
+		}
+		else {
+			result = null;
+		}
+	}
+	public static void QueryInterfaceSafe(this Antilatency.InterfaceContract.IUnsafe _this, ref Antilatency.Alt.Environment.IEnvironmentMutable result) {
+		Antilatency.Utils.SafeDispose(ref result);
+		var guid = Antilatency_Alt_Environment_IEnvironmentMutable_InterfaceID;
+		System.IntPtr ptr = System.IntPtr.Zero;
+		_this.QueryInterface(ref guid, out ptr);
+		if (ptr != System.IntPtr.Zero) {
+			result = new Antilatency.Alt.Environment.Details.IEnvironmentMutableWrapper(ptr);
+		}
+	}
+}
+namespace Antilatency.Alt.Environment {
+	namespace Details {
+		public class IEnvironmentMutableWrapper : Antilatency.InterfaceContract.Details.IInterfaceWrapper, IEnvironmentMutable {
+			private IEnvironmentMutableRemap.VMT _VMT = new IEnvironmentMutableRemap.VMT();
+			protected new int GetTotalNativeMethodsCount() {
+			    return base.GetTotalNativeMethodsCount() + typeof(IEnvironmentMutableRemap.VMT).GetFields().Length;
+			}
+			public IEnvironmentMutableWrapper(System.IntPtr obj) : base(obj) {
+			    _VMT = LoadVMT<IEnvironmentMutableRemap.VMT>(base.GetTotalNativeMethodsCount());
+			}
+			public Antilatency.InterfaceContract.Bool mutate(float[] powers, UnityEngine.Vector3[] rays, float sphereD, UnityEngine.Vector2[] x, Antilatency.Math.float2x3[] xOverPosition, UnityEngine.Vector3 up) {
+				Antilatency.InterfaceContract.Bool result;
+				Antilatency.InterfaceContract.Bool resultMarshaler;
+				var powersMarshaler = Antilatency.InterfaceContract.Details.ArrayInMarshaler.create(powers);
+				var raysMarshaler = Antilatency.InterfaceContract.Details.ArrayInMarshaler.create(rays);
+				var xMarshaler = Antilatency.InterfaceContract.Details.ArrayInMarshaler.create(x);
+				var xOverPositionMarshaler = Antilatency.InterfaceContract.Details.ArrayInMarshaler.create(xOverPosition);
+				var interfaceContractExceptionCode = (_VMT.mutate(_object, powersMarshaler, raysMarshaler, sphereD, xMarshaler, xOverPositionMarshaler, up, out resultMarshaler));
+				powersMarshaler.Dispose();
+				raysMarshaler.Dispose();
+				xMarshaler.Dispose();
+				xOverPositionMarshaler.Dispose();
+				result = resultMarshaler;
+				HandleExceptionCode(interfaceContractExceptionCode);
+				return result;
+			}
+			public int getUpdateId() {
+				int result;
+				int resultMarshaler;
+				var interfaceContractExceptionCode = (_VMT.getUpdateId(_object, out resultMarshaler));
+				result = resultMarshaler;
+				HandleExceptionCode(interfaceContractExceptionCode);
+				return result;
+			}
+		}
+		public class IEnvironmentMutableRemap : Antilatency.InterfaceContract.Details.IInterfaceRemap {
+			public new struct VMT {
+				public delegate Antilatency.InterfaceContract.ExceptionCode mutateDelegate(System.IntPtr _this, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate powers, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate rays, float sphereD, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate x, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate xOverPosition, UnityEngine.Vector3 up, out Antilatency.InterfaceContract.Bool result);
+				public delegate Antilatency.InterfaceContract.ExceptionCode getUpdateIdDelegate(System.IntPtr _this, out int result);
+				#pragma warning disable 0649
+				public mutateDelegate mutate;
+				public getUpdateIdDelegate getUpdateId;
+				#pragma warning restore 0649
+			}
+			public new static readonly NativeInterfaceVmt NativeVmt;
+			static IEnvironmentMutableRemap() {
+				var vmtBlocks = new System.Collections.Generic.List<object>();
+				AppendVmt(vmtBlocks);
+				NativeVmt = new NativeInterfaceVmt(vmtBlocks);
+			}
+			#if __MonoCS__
+				[MonoPInvokeCallback(typeof(VMT.mutateDelegate))]
+			#endif
+			private static Antilatency.InterfaceContract.ExceptionCode mutate(System.IntPtr _this, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate powers, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate rays, float sphereD, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate x, Antilatency.InterfaceContract.Details.ArrayInMarshaler.Intermediate xOverPosition, UnityEngine.Vector3 up, out Antilatency.InterfaceContract.Bool result) {
+				try {
+					var obj = GetContext(_this) as IEnvironmentMutable;
+					var resultMarshaler = obj.mutate(powers.toArray<float>(), rays.toArray<UnityEngine.Vector3>(), sphereD, x.toArray<UnityEngine.Vector2>(), xOverPosition.toArray<Antilatency.Math.float2x3>(), up);
+					result = resultMarshaler;
+				}
+				catch (System.Exception ex) {
+					result = default(Antilatency.InterfaceContract.Bool);
+					return handleRemapException(ex, _this);
+				}
+				return Antilatency.InterfaceContract.ExceptionCode.Ok;
+			}
+			#if __MonoCS__
+				[MonoPInvokeCallback(typeof(VMT.getUpdateIdDelegate))]
+			#endif
+			private static Antilatency.InterfaceContract.ExceptionCode getUpdateId(System.IntPtr _this, out int result) {
+				try {
+					var obj = GetContext(_this) as IEnvironmentMutable;
+					var resultMarshaler = obj.getUpdateId();
+					result = resultMarshaler;
+				}
+				catch (System.Exception ex) {
+					result = default(int);
+					return handleRemapException(ex, _this);
+				}
+				return Antilatency.InterfaceContract.ExceptionCode.Ok;
+			}
+			protected static new void AppendVmt(System.Collections.Generic.List<object> buffer) {
+				Antilatency.InterfaceContract.Details.IInterfaceRemap.AppendVmt(buffer);
+				var vmt = new VMT();
+				vmt.mutate = mutate;
+				vmt.getUpdateId = getUpdateId;
+				buffer.Add(vmt);
+			}
+			public IEnvironmentMutableRemap() { }
+			public IEnvironmentMutableRemap(System.IntPtr context, ushort lifetimeId) {
+				AllocateNativeInterface(NativeVmt.Handle, context, lifetimeId);
+			}
+		}
+	}
+}
+
 

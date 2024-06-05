@@ -71,7 +71,7 @@ allprojects {
 			<true>
                 <!--replace with dependencies.implementation-->
 				<insert>
-dependencies.compile(name: 'AntilatencyAltTracking', ext: 'aar')
+dependencies.implementation(name: 'AntilatencyAltTracking', ext: 'aar')
 				</insert>
 			</true>>
 		</if>

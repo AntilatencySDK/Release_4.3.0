@@ -71,7 +71,7 @@ allprojects {
             <true>
                 <!--replace with dependencies.implementation-->
                 <insert>
-dependencies.compile(name: 'AntilatencyBracer', ext: 'aar')
+dependencies.implementation(name: 'AntilatencyBracer', ext: 'aar')
                 </insert>
             </true>
         </if>

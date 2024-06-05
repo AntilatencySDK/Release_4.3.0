@@ -71,7 +71,7 @@ allprojects {
 			<true>
                 <!--replace with dependencies.implementation-->
 				<insert>
-dependencies.compile(name: 'AntilatencyHardwareExtensionInterface', ext: 'aar')
+dependencies.implementation(name: 'AntilatencyHardwareExtensionInterface', ext: 'aar')
 				</insert>
 			</true>
 		</if>

@@ -115,8 +115,8 @@ allprojects {
                 <!--replace with dependencies.implementation-->
                 <insert>
 dependencies {
-    compile(name: 'AntilatencyDeviceNetwork', ext: 'aar')
-    compile(name: 'AntilatencyUsbServiceInterfaces', ext: 'aar')
+    implementation(name: 'AntilatencyDeviceNetwork', ext: 'aar')
+    implementation(name: 'AntilatencyUsbServiceInterfaces', ext: 'aar')
 }
                 </insert>
             </true>

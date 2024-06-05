@@ -71,7 +71,7 @@ allprojects {
 			<true>
                 <!--replace with dependencies.implementation-->
 				<insert>
-dependencies.compile(name: 'AntilatencyStorageClient', ext: 'aar')
+dependencies.implementation(name: 'AntilatencyStorageClient', ext: 'aar')
 				</insert>
 			</true>
 		</if>

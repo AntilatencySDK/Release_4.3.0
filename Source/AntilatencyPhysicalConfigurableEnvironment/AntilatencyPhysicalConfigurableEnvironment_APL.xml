@@ -71,7 +71,7 @@ allprojects {
 			<true>
                 <!--replace with dependencies.implementation-->
 				<insert>
-dependencies.compile(name: 'AntilatencyPhysicalConfigurableEnvironment', ext: 'aar')
+dependencies.implementation(name: 'AntilatencyPhysicalConfigurableEnvironment', ext: 'aar')
 				</insert>
 			</true>>
 		</if>
